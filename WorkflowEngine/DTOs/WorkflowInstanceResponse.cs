@@ -8,3 +8,5 @@ public class WorkflowInstanceResponse
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
 }
+
+//  the DTO are needed for services

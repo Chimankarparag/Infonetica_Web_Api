@@ -2,6 +2,10 @@ using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("api/[controller]")]
+
+//after declaring the models, declared the controller class
+//such the api controller 
+
 public class WorkflowDefinitionController : ControllerBase
 {
     private readonly IWorkflowService _workflowService;
@@ -10,12 +14,12 @@ public class WorkflowDefinitionController : ControllerBase
     {
         _workflowService = workflowService;
     }
-
+    //created endpoints for the workflow definition operations
     [HttpPost]
     public async Task<IActionResult> CreateWorkflowDefinition([FromBody] CreateWorkflowDefinitionRequest request)
     {
         var (success, definitionId, errors) = await _workflowService.CreateWorkflowDefinitionAsync(request);
-        
+
         if (!success)
         {
             return BadRequest(new { errors });

@@ -10,7 +10,7 @@ public class WorkflowInstanceController : ControllerBase
     {
         _workflowService = workflowService;
     }
-
+    // similarly creating the endpoints for the workflow instance operations
     [HttpPost("start/{definitionId}")]
     public async Task<IActionResult> StartWorkflowInstance(string definitionId)
     {
@@ -39,6 +39,7 @@ public class WorkflowInstanceController : ControllerBase
     [HttpPost("{id}/execute")]
     public async Task<IActionResult> ExecuteAction(string id, [FromBody] ExecuteActionRequest request)
     {
+        //the state change is handled by the service layer - actions - in ExecuteActionAsync method
         var (success, errors) = await _workflowService.ExecuteActionAsync(id, request.ActionId);
         
         if (!success)
