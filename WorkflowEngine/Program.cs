@@ -14,6 +14,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
+    //using swagger for API testing in development
     app.UseSwagger();
     app.UseSwaggerUI();
 }
