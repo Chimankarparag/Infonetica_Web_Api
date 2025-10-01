@@ -482,19 +482,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/chimankarparag/.nuget/packages/": {}
+    "/Users/shambo/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/chimankarparag/Desktop/CDC_Test/Infonetica_Task/WorkflowEngine/WorkflowEngine.csproj",
+      "projectUniqueName": "/Users/shambo/Documents/contributions/Infonetica_Web_Api/WorkflowEngine/WorkflowEngine.csproj",
       "projectName": "WorkflowEngine",
-      "projectPath": "/Users/chimankarparag/Desktop/CDC_Test/Infonetica_Task/WorkflowEngine/WorkflowEngine.csproj",
-      "packagesPath": "/Users/chimankarparag/.nuget/packages/",
-      "outputPath": "/Users/chimankarparag/Desktop/CDC_Test/Infonetica_Task/WorkflowEngine/obj/",
+      "projectPath": "/Users/shambo/Documents/contributions/Infonetica_Web_Api/WorkflowEngine/WorkflowEngine.csproj",
+      "packagesPath": "/Users/shambo/.nuget/packages/",
+      "outputPath": "/Users/shambo/Documents/contributions/Infonetica_Web_Api/WorkflowEngine/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/chimankarparag/.nuget/NuGet/NuGet.Config"
+        "/Users/shambo/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"

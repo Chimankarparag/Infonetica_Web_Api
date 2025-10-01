@@ -1,6 +1,10 @@
-// (DTO) is an object used to encapsulate data and transfer it between different layers or components of an application.
+using WorkflowEngine.Models;
 
+namespace WorkflowEngine.DTOs;
 
+/// <summary>
+/// DTO for creating a workflow definition
+/// </summary>
 public class CreateWorkflowDefinitionRequest
 {
     public string Name { get; set; } = string.Empty;

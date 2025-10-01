@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
+using WorkflowEngine.DTOs;
+using WorkflowEngine.Services;
+
+namespace WorkflowEngine.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-
-//after declaring the models, declared the controller class
-//such the api controller 
-
 public class WorkflowDefinitionController : ControllerBase
 {
     private readonly IWorkflowService _workflowService;
@@ -14,7 +14,12 @@ public class WorkflowDefinitionController : ControllerBase
     {
         _workflowService = workflowService;
     }
-    //created endpoints for the workflow definition operations
+
+    /// <summary>
+    /// Creates a new workflow definition
+    /// </summary>
+    /// <param name="request">The workflow definition creation request</param>
+    /// <returns>The created workflow definition ID</returns>
     [HttpPost]
     public async Task<IActionResult> CreateWorkflowDefinition([FromBody] CreateWorkflowDefinitionRequest request)
     {
@@ -28,6 +33,11 @@ public class WorkflowDefinitionController : ControllerBase
         return CreatedAtAction(nameof(GetWorkflowDefinition), new { id = definitionId }, new { id = definitionId });
     }
 
+    /// <summary>
+    /// Gets a workflow definition by ID
+    /// </summary>
+    /// <param name="id">The workflow definition ID</param>
+    /// <returns>The workflow definition</returns>
     [HttpGet("{id}")]
     public async Task<IActionResult> GetWorkflowDefinition(string id)
     {
@@ -40,6 +50,10 @@ public class WorkflowDefinitionController : ControllerBase
         return Ok(definition);
     }
 
+    /// <summary>
+    /// Gets all workflow definitions
+    /// </summary>
+    /// <returns>A list of all workflow definitions</returns>
     [HttpGet]
     public async Task<IActionResult> GetAllWorkflowDefinitions()
     {

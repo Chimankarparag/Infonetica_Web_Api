@@ -1,4 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using WorkflowEngine.DTOs;
+using WorkflowEngine.Services;
+
+namespace WorkflowEngine.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -10,7 +14,12 @@ public class WorkflowInstanceController : ControllerBase
     {
         _workflowService = workflowService;
     }
-    // similarly creating the endpoints for the workflow instance operations
+
+    /// <summary>
+    /// Starts a new workflow instance
+    /// </summary>
+    /// <param name="definitionId">The workflow definition ID</param>
+    /// <returns>The created workflow instance ID</returns>
     [HttpPost("start/{definitionId}")]
     public async Task<IActionResult> StartWorkflowInstance(string definitionId)
     {
@@ -24,6 +33,11 @@ public class WorkflowInstanceController : ControllerBase
         return CreatedAtAction(nameof(GetWorkflowInstance), new { id = instanceId }, new { id = instanceId });
     }
 
+    /// <summary>
+    /// Gets a workflow instance by ID
+    /// </summary>
+    /// <param name="id">The workflow instance ID</param>
+    /// <returns>The workflow instance</returns>
     [HttpGet("{id}")]
     public async Task<IActionResult> GetWorkflowInstance(string id)
     {
@@ -36,10 +50,16 @@ public class WorkflowInstanceController : ControllerBase
         return Ok(instance);
     }
 
+    /// <summary>
+    /// Executes an action on a workflow instance
+    /// </summary>
+    /// <param name="id">The workflow instance ID</param>
+    /// <param name="request">The action execution request</param>
+    /// <returns>Success status of the action execution</returns>
     [HttpPost("{id}/execute")]
     public async Task<IActionResult> ExecuteAction(string id, [FromBody] ExecuteActionRequest request)
     {
-        //the state change is handled by the service layer - actions - in ExecuteActionAsync method
+        // The state change is handled by the service layer in ExecuteActionAsync method
         var (success, errors) = await _workflowService.ExecuteActionAsync(id, request.ActionId);
         
         if (!success)
@@ -50,6 +70,10 @@ public class WorkflowInstanceController : ControllerBase
         return Ok(new { message = "Action executed successfully" });
     }
 
+    /// <summary>
+    /// Gets all workflow instances
+    /// </summary>
+    /// <returns>A list of all workflow instances</returns>
     [HttpGet]
     public async Task<IActionResult> GetAllWorkflowInstances()
     {

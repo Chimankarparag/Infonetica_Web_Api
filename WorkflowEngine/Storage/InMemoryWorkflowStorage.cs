@@ -1,3 +1,10 @@
+using WorkflowEngine.Models;
+
+namespace WorkflowEngine.Storage;
+
+/// <summary>
+/// In-memory implementation of workflow storage
+/// </summary>
 public class InMemoryWorkflowStorage : IWorkflowStorage
 {
     private readonly Dictionary<string, WorkflowDefinition> _definitions = new();
@@ -15,6 +22,7 @@ public class InMemoryWorkflowStorage : IWorkflowStorage
         _definitions[definition.Id] = definition;
         return Task.FromResult(definition.Id);
     }
+
     public Task<List<WorkflowDefinition>> GetAllWorkflowDefinitionsAsync()
     {
         return Task.FromResult(_definitions.Values.ToList());
