@@ -1,3 +1,10 @@
+using WorkflowEngine.Models;
+
+namespace WorkflowEngine.DTOs;
+
+/// <summary>
+/// DTO for workflow instance response
+/// </summary>
 public class WorkflowInstanceResponse
 {
     public string Id { get; set; } = string.Empty;
@@ -8,5 +15,3 @@ public class WorkflowInstanceResponse
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
 }
-
-//  the DTO are needed for services
