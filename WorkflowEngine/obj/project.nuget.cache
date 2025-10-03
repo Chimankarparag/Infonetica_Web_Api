@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "ysNbbFTDglk=",
+  "dgSpecHash": "TA1sBYttr+0=",
   "success": true,
   "projectFilePath": "/Users/shambo/Documents/contributions/Infonetica_Web_Api/WorkflowEngine/WorkflowEngine.csproj",
   "expectedPackageFiles": [
     "/Users/shambo/.nuget/packages/microsoft.aspnetcore.openapi/8.0.18/microsoft.aspnetcore.openapi.8.0.18.nupkg.sha512",
     "/Users/shambo/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "/Users/shambo/.nuget/packages/microsoft.openapi/1.6.14/microsoft.openapi.1.6.14.nupkg.sha512",
+    "/Users/shambo/.nuget/packages/scalar.aspnetcore/1.2.42/scalar.aspnetcore.1.2.42.nupkg.sha512",
     "/Users/shambo/.nuget/packages/swashbuckle.aspnetcore/6.6.2/swashbuckle.aspnetcore.6.6.2.nupkg.sha512",
     "/Users/shambo/.nuget/packages/swashbuckle.aspnetcore.swagger/6.6.2/swashbuckle.aspnetcore.swagger.6.6.2.nupkg.sha512",
     "/Users/shambo/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.6.2/swashbuckle.aspnetcore.swaggergen.6.6.2.nupkg.sha512",
