@@ -67,3 +67,5 @@
 /Users/shambo/Documents/contributions/Infonetica_Web_Api/WorkflowEngine/obj/Debug/net8.0/WorkflowEngine.genruntimeconfig.cache
 /Users/shambo/Documents/contributions/Infonetica_Web_Api/WorkflowEngine/obj/Debug/net8.0/ref/WorkflowEngine.dll
 /Users/shambo/Documents/contributions/Infonetica_Web_Api/WorkflowEngine/bin/Debug/net8.0/Scalar.AspNetCore.dll
+/Users/shambo/Documents/contributions/Infonetica_Web_Api/WorkflowEngine/bin/Debug/net8.0/WorkflowEngine.xml
+/Users/shambo/Documents/contributions/Infonetica_Web_Api/WorkflowEngine/obj/Debug/net8.0/WorkflowEngine.xml

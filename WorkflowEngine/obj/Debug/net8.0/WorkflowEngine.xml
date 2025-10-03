@@ -1,0 +1,231 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WorkflowEngine</name>
+    </assembly>
+    <members>
+        <member name="T:WorkflowEngine.Controllers.WorkflowDefinitionController">
+            <summary>
+            Controller for managing workflow definitions
+            </summary>
+        </member>
+        <member name="M:WorkflowEngine.Controllers.WorkflowDefinitionController.CreateWorkflowDefinition(WorkflowEngine.DTOs.CreateWorkflowDefinitionRequest)">
+            <summary>
+            Creates a new workflow definition
+            </summary>
+            <param name="request">The workflow definition creation request containing name, states, and actions</param>
+            <returns>The created workflow definition ID</returns>
+            <response code="201">Workflow definition created successfully</response>
+            <response code="400">Invalid request or validation errors</response>
+        </member>
+        <member name="M:WorkflowEngine.Controllers.WorkflowDefinitionController.GetWorkflowDefinition(System.String)">
+            <summary>
+            Gets a workflow definition by ID
+            </summary>
+            <param name="id">The unique identifier of the workflow definition</param>
+            <returns>The workflow definition details</returns>
+            <response code="200">Workflow definition found and returned</response>
+            <response code="404">Workflow definition not found</response>
+        </member>
+        <member name="M:WorkflowEngine.Controllers.WorkflowDefinitionController.GetAllWorkflowDefinitions">
+            <summary>
+            Gets all workflow definitions
+            </summary>
+            <returns>A collection of all workflow definitions in the system</returns>
+            <response code="200">List of workflow definitions returned successfully</response>
+        </member>
+        <member name="T:WorkflowEngine.Controllers.WorkflowInstanceController">
+            <summary>
+            Controller for managing workflow instances and their execution
+            </summary>
+        </member>
+        <member name="M:WorkflowEngine.Controllers.WorkflowInstanceController.StartWorkflowInstance(System.String)">
+            <summary>
+            Starts a new workflow instance from a workflow definition
+            </summary>
+            <param name="definitionId">The unique identifier of the workflow definition to instantiate</param>
+            <returns>The created workflow instance ID</returns>
+            <response code="201">Workflow instance created successfully</response>
+            <response code="400">Invalid definition ID or workflow definition not found</response>
+        </member>
+        <member name="M:WorkflowEngine.Controllers.WorkflowInstanceController.GetWorkflowInstance(System.String)">
+            <summary>
+            Gets a workflow instance by ID with its current state and execution history
+            </summary>
+            <param name="id">The unique identifier of the workflow instance</param>
+            <returns>The workflow instance details including current state</returns>
+            <response code="200">Workflow instance found and returned</response>
+            <response code="404">Workflow instance not found</response>
+        </member>
+        <member name="M:WorkflowEngine.Controllers.WorkflowInstanceController.ExecuteAction(System.String,WorkflowEngine.DTOs.ExecuteActionRequest)">
+            <summary>
+            Executes an action on a workflow instance, potentially changing its state
+            </summary>
+            <param name="id">The unique identifier of the workflow instance</param>
+            <param name="request">The action execution request containing the action ID to execute</param>
+            <returns>Success status of the action execution</returns>
+            <response code="200">Action executed successfully</response>
+            <response code="400">Invalid request, action not found, or action cannot be executed in current state</response>
+            <response code="404">Workflow instance not found</response>
+        </member>
+        <member name="M:WorkflowEngine.Controllers.WorkflowInstanceController.GetAllWorkflowInstances">
+            <summary>
+            Gets all workflow instances in the system
+            </summary>
+            <returns>A collection of all workflow instances with their current states</returns>
+            <response code="200">List of workflow instances returned successfully</response>
+        </member>
+        <member name="T:WorkflowEngine.DTOs.CreateWorkflowDefinitionRequest">
+            <summary>
+            Request model for creating a new workflow definition
+            </summary>
+        </member>
+        <member name="P:WorkflowEngine.DTOs.CreateWorkflowDefinitionRequest.Name">
+            <summary>
+            The name of the workflow definition
+            </summary>
+            <example>Order Processing Workflow</example>
+        </member>
+        <member name="P:WorkflowEngine.DTOs.CreateWorkflowDefinitionRequest.States">
+            <summary>
+            List of states that define the workflow stages
+            </summary>
+        </member>
+        <member name="P:WorkflowEngine.DTOs.CreateWorkflowDefinitionRequest.Actions">
+            <summary>
+            List of actions that can be executed to transition between states
+            </summary>
+        </member>
+        <member name="T:WorkflowEngine.DTOs.ExecuteActionRequest">
+            <summary>
+            Request model for executing an action on a workflow instance
+            </summary>
+        </member>
+        <member name="P:WorkflowEngine.DTOs.ExecuteActionRequest.ActionId">
+            <summary>
+            The unique identifier of the action to execute
+            </summary>
+            <example>approve-order</example>
+        </member>
+        <member name="T:WorkflowEngine.DTOs.WorkflowInstanceResponse">
+            <summary>
+            DTO for workflow instance response
+            </summary>
+        </member>
+        <member name="T:WorkflowEngine.Models.Action">
+            <summary>
+            Represents an action that transitions between workflow states
+            </summary>
+        </member>
+        <member name="P:WorkflowEngine.Models.Action.Id">
+            <summary>
+            Unique identifier for the action
+            </summary>
+            <example>approve</example>
+        </member>
+        <member name="P:WorkflowEngine.Models.Action.Name">
+            <summary>
+            Display name of the action
+            </summary>
+            <example>Approve Order</example>
+        </member>
+        <member name="P:WorkflowEngine.Models.Action.Enabled">
+            <summary>
+            Indicates if the action is currently enabled
+            </summary>
+        </member>
+        <member name="P:WorkflowEngine.Models.Action.FromStates">
+            <summary>
+            List of state IDs from which this action can be executed
+            </summary>
+        </member>
+        <member name="P:WorkflowEngine.Models.Action.ToState">
+            <summary>
+            The target state ID that this action transitions to
+            </summary>
+            <example>approved</example>
+        </member>
+        <member name="P:WorkflowEngine.Models.Action.Description">
+            <summary>
+            Optional description of the action
+            </summary>
+        </member>
+        <member name="T:WorkflowEngine.Models.State">
+            <summary>
+            Represents a state in a workflow
+            </summary>
+        </member>
+        <member name="P:WorkflowEngine.Models.State.Id">
+            <summary>
+            Unique identifier for the state
+            </summary>
+            <example>pending</example>
+        </member>
+        <member name="P:WorkflowEngine.Models.State.Name">
+            <summary>
+            Display name of the state
+            </summary>
+            <example>Pending Review</example>
+        </member>
+        <member name="P:WorkflowEngine.Models.State.IsInitial">
+            <summary>
+            Indicates if this is the initial state of the workflow
+            </summary>
+        </member>
+        <member name="P:WorkflowEngine.Models.State.IsFinal">
+            <summary>
+            Indicates if this is a final state of the workflow
+            </summary>
+        </member>
+        <member name="P:WorkflowEngine.Models.State.Enabled">
+            <summary>
+            Indicates if the state is currently enabled
+            </summary>
+        </member>
+        <member name="P:WorkflowEngine.Models.State.Description">
+            <summary>
+            Optional description of the state
+            </summary>
+        </member>
+        <member name="T:WorkflowEngine.Models.WorkflowDefinition">
+            <summary>
+            Represents a workflow definition with states and actions
+            </summary>
+        </member>
+        <member name="T:WorkflowEngine.Models.WorkflowInstance">
+            <summary>
+            Represents a workflow instance
+            </summary>
+        </member>
+        <member name="T:WorkflowEngine.Models.HistoryEntry">
+            <summary>
+            Represents a history entry for state transitions
+            </summary>
+        </member>
+        <member name="T:WorkflowEngine.Services.IWorkflowService">
+            <summary>
+            Interface defining workflow service operations
+            </summary>
+        </member>
+        <member name="T:WorkflowEngine.Storage.InMemoryWorkflowStorage">
+            <summary>
+            In-memory implementation of workflow storage
+            </summary>
+        </member>
+        <member name="T:WorkflowEngine.Storage.IWorkflowStorage">
+            <summary>
+            Interface defining storage operations for workflow definitions and instances
+            </summary>
+        </member>
+        <member name="T:WorkflowEngine.Validators.WorkflowValidator">
+            <summary>
+            Validator for workflow definitions
+            </summary>
+        </member>
+        <member name="T:WorkflowEngine.Validators.ValidationResult">
+            <summary>
+            Result of validation operations
+            </summary>
+        </member>
+    </members>
+</doc>
